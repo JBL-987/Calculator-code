@@ -16,9 +16,9 @@ e.grid(row=0, columnspan=4, pady=20, padx=20)
 
 
 def cetak(nilai):
-    current = e.get()
+    nomor_awal = e.get()
     e.delete(0, END)
-    e.insert(0, str(current) + str(nilai))
+    e.insert(0, str(nomor_awal) + str(nilai))
 
 
 def tambah():
@@ -27,7 +27,7 @@ def tambah():
     global mtk
     mtk = "penjumlahan"
     n_awal = int(nomor_awal)
-    e.delete(0, END)
+
 
 
 def kurang():
@@ -36,7 +36,6 @@ def kurang():
     global mtk
     mtk = "pengurangan"
     n_awal = int(nomor_awal)
-    e.delete(0, END)
 
 
 def bagi():
@@ -45,7 +44,6 @@ def bagi():
     global mtk
     mtk = "pembagian"
     n_awal = int(nomor_awal)
-    e.delete(0, END)
 
 
 def kali():
@@ -54,16 +52,14 @@ def kali():
     global mtk
     mtk = "perkalian"
     n_awal = int(nomor_awal)
-    e.delete(0, END)
 
 
-def sisabagi():
+def persen():
     nomor_awal = e.get()
     global n_awal
-    global mtk
-    mtk = "sisabagi"
     n_awal = int(nomor_awal)
     e.delete(0, END)
+    e.insert(0, n_awal / 100)
 
 
 def pangkat():
@@ -94,16 +90,10 @@ def samadengan():
     elif mtk == "pengurangan":
         e.insert(0, n_awal - int(nomor_akhir))
     elif mtk == "pembagian":
-        try:
             hitung = n_awal / int(nomor_akhir)
             e.insert(0, hitung)
-        except ZeroDivisionError:
-            e.insert(0, "maaf komputer anda kentang")
-
     elif mtk == "perkalian":
         e.insert(0, n_awal * int(nomor_akhir))
-    elif mtk == "sisabagi":
-        e.insert(0, n_awal % int(nomor_akhir))
 
 
 btn1 = Button(root, text="1", padx=30, bg="#3d3d3d", fg="white", pady=20, command=lambda: cetak(1))
@@ -121,8 +111,8 @@ kur = Button(root, text="-", padx=30, bg="#878787", fg="white", pady=20, command
 bag = Button(root, text="/", padx=30, bg="#878787", fg="white", pady=20, command=bagi)
 kal = Button(root, text="x", padx=30, bg="#878787", fg="white", pady=20, command=kali)
 pang = Button(root, text="x2", padx=30, bg="#878787", fg="white", pady=20, command=pangkat)
-ak2 = Button(root, text="sq2", padx=25, bg="#878787", fg="white", pady=20, command=akar)
-sisbag = Button(root, text="%", padx=30, bg="#878787", fg="white", pady=20, command=sisabagi)
+ak2 = Button(root, text="rt", padx=25, bg="#878787", fg="white", pady=20, command=akar)
+per = Button(root, text="%", padx=30, bg="#878787", fg="white", pady=20, command=persen)
 hap = Button(root, text="C", padx=30, bg="#878787", fg="white", pady=20, command=hapus)
 equal = Button(root, text="=", padx=60, bg="cyan", pady=20, command=samadengan)
 
@@ -145,7 +135,7 @@ hap.grid(row=4, column=0, pady=2)
 equal.grid(row=5, column=2, columnspan=2)
 pang.grid(row=5, column=0, pady=2)
 ak2.grid(row=5, column=1, pady=2)
-sisbag.grid(row=4, column=2, pady=2)
+per.grid(row=4, column=2, pady=2)
 
 root.mainloop()
 
